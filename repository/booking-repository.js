@@ -20,6 +20,24 @@ class BookingRepository{
         StatusCodes.INTERNAL_SERVER_ERROR)
     }
    }
+
+   async update(bookingId,data)
+   {
+    try
+    {
+       const booking=await Booking.findByPk(bookingId) ;
+       if(data.status)
+       {
+        booking.status = data.status ;
+       }
+      await  booking.save() ;
+        return booking ;
+    }
+    catch(error)
+    {
+      error 
+    }
+   }
 }
 
 module.exports = BookingRepository ;
